@@ -3,6 +3,7 @@ class CalendarsController < ApplicationController
 
   def index
     getweek
+
     @plan = Plan.new
   end
 
@@ -20,6 +21,8 @@ class CalendarsController < ApplicationController
   def getweek
     @wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
     @todays_date = Date.today
+
+
     @week_days = []
     plans = Plan.where(date: @todays_date..@todays_date + 6)
 
@@ -50,6 +53,7 @@ class CalendarsController < ApplicationController
         plans: today_plans,
         wday: wday_num
       }
+
       @week_days.push(days)
     end
   end
